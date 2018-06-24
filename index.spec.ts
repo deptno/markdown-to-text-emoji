@@ -21,14 +21,33 @@ describe('emoji', () => {
     expect(createRegExpText(source)).toEqual(`:(${Object.keys(source).join('|')}):`)
   })
   it('textEmoji', () => {
-    [{
+    [
+      {
       before: `hello i'm :smile: feeling :smiling_imp::smile:`,
       after : `hello i'm 😄 feeling 😈😄`
-    }, {
-      before: `hello i'm :smile: feeling :smiling_imp::smile:
+      },
+      {
+        before: `hello i'm :smile: feeling :smiling_imp::smile:
       hello i'm :smile: feeling :smiling_imp::smile:`,
-      after : `hello i'm 😄 feeling 😈😄
+        after : `hello i'm 😄 feeling 😈😄
       hello i'm 😄 feeling 😈😄`
-    }].map(({before, after}) => expect(textEmoji(before)).toEqual(after))
+      },
+      {
+        before: null,
+        after : ''
+      },
+      {
+        before: 4,
+        after : '4'
+      },
+      {
+        before: true,
+        after : 'true'
+      },
+      {
+        before: false,
+        after : 'false'
+      }
+    ].map(({before, after}) => expect(textEmoji(before)).toEqual(after))
   })
 })

@@ -4,6 +4,9 @@
 |---|---|
 |`hello :smile: :smiling_imp::smile:`|`hello 😄 😈😄`|
 
+> All primitive input evaluate String except `null`, `undefined`,
+> `null`, `undefined` evaluate empty string.
+
 ## Install
 
 ```bash
@@ -16,6 +19,7 @@ import {textEmoji} from 'markdown-to-text-emoji'
 
 textEmoji(`hello :smile: :smiling_imp::smile:`) // `hello 😄 😈😄`
 ```
+
 
 ## Test
 ```bash

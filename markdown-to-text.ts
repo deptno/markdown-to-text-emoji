@@ -1,4 +1,20 @@
-import {__, concat, join, map, keys, compose, prop, replace} from 'ramda/src'
+import {
+  __,
+  concat,
+  join,
+  map,
+  keys,
+  compose,
+  prop,
+  replace,
+  ifElse,
+  isNil,
+  always,
+  identity,
+  pipe,
+  toString,
+  is
+} from 'ramda/src'
 import * as escape from 'escape-string-regexp'
 import emoji from './emoji'
 
@@ -7,7 +23,7 @@ export const createMapMdToEmoji = (emoji) => {
   for (let md in emoji) {
     ret[`:${md}:`] = emoji[md]
   }
-  return ret;
+  return ret
 }
 
 export const emojiMd = createMapMdToEmoji(emoji)
@@ -21,4 +37,15 @@ export const createRegExpText = compose(
 
 const regexp = new RegExp(createRegExpText(emoji), 'gm')
 
-export const textEmoji = replace(regexp, prop(__, emojiMd))
+export const textEmoji = ifElse(
+  isNil,
+  always(''),
+  pipe(
+    ifElse(
+      is(String),
+      identity,
+      toString,
+    ),
+    replace(regexp, prop(__, emojiMd))
+  )
+)
