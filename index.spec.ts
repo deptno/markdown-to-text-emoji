@@ -33,6 +33,10 @@ describe('emoji', () => {
       hello i'm 😄 feeling 😈😄`
       },
       {
+        before: '',
+        after : ''
+      },
+      {
         before: null,
         after : ''
       },
