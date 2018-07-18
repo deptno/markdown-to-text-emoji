@@ -1,4 +1,5 @@
 # markdown to text emoji
+[![npm](https://img.shields.io/npm/dt/markdown-to-text-emoji.svg?style=for-the-badge)](https://www.npmjs.com/package/markdown-to-text-emoji)
 
 |Input|Output|
 |---|---|
