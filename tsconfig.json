@@ -3,9 +3,9 @@
     "module": "commonjs",
     "target": "es5",
     "removeComments": true,
-    "outDir": "dist",
     "declaration": true,
     "lib": [
+      "es5",
       "es2017",
       "dom",
       "esnext.asynciterable"

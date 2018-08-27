@@ -32,12 +32,11 @@ export const createRegExpText = compose(
   concat(__, '):'),
   join('|'),
   map(escape),
-  keys
-)
+  keys)
 
 const regexp = new RegExp(createRegExpText(emoji), 'gm')
 
-export const textEmoji = ifElse(
+export const textEmoji: (containEmojiText: string) => string = ifElse(
   isNil,
   always(''),
   pipe(
@@ -46,6 +45,4 @@ export const textEmoji = ifElse(
       identity,
       toString,
     ),
-    replace(regexp, prop(__, emojiMd))
-  )
-)
+    replace(regexp, prop(__, emojiMd))))
